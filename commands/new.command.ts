@@ -41,6 +41,11 @@ export class NewCommand extends AbstractCommand {
         });
 
         if (!!command.language) {
+          if (typeof command.language !== 'string') {
+            throw new Error(
+              `Language is not set. Available languages are "typescript" or "javascript"`,
+            );
+          }
           const langMatch = availableLanguages.includes(
             command.language.toLowerCase(),
           );
